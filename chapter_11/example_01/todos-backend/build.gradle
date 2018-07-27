@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://repo.spring.io/libs-milestone"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('com.google.cloud.tools:appengine-gradle-plugin:+')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.google.cloud.tools.appengine'
+
+group = 'com.packtpub.gcpfordevelopers'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo.spring.io/libs-milestone"
+    }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.cloud:spring-cloud-gcp-starter-sql-mysql:1.0.0.M2')
+    compile('org.springframework.cloud:spring-cloud-gcp-starter-trace:1.0.0.M3')
+    compile('org.springframework.cloud:spring-cloud-gcp-starter-logging:1.0.0.M3')
+    runtime('com.h2database:h2')
+    runtime('mysql:mysql-connector-java')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+appengine {
+    deploy {
+    }
+}

@@ -1,0 +1,21 @@
+(
+    resource.type="gae_app"
+    resource.labels.module_id=("todos-frontend" OR "todos-backend")
+    logName=(
+        "projects/<PROJECT_ID>/logs/appengine.googleapis.com%2Fstdout"
+      OR 
+        "projects/<PROJECT_ID>/logs/appengine.googleapis.com%2Fstderr"
+      OR
+        "projects/<PROJECT_ID>/logs/appengine.googleapis.com%2Fnginx.request"
+    )
+)
+OR
+(
+    resource.type="cloudsql_database"
+    resource.labels.database_id="<PROJECT_ID>:todos-db"
+    logName=(
+        "projects/<PROJECT_ID>/logs/cloudaudit.googleapis.com%2Factivity" 
+      OR 
+        "projects/<PROJECT_ID>/logs/cloudsql.googleapis.com%2Fmysql.err"
+    )
+)

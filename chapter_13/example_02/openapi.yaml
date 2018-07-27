@@ -1,0 +1,44 @@
+swagger: "2.0"
+info:
+  title: "Used Cars API"
+  version: "1.0.0"
+  description: "An example API for managing an inventory of used cars"
+host: "used-cars2-dot-<YOUR_PROJECT_ID>.appspot.com"
+consumes: [ "application/json" ]
+produces: [ "application/json" ]
+schemes: [ "http", "https" ]
+paths:
+  "/api/cars":
+    get:
+      operationId: getAllCars
+      description: "Gets all cars"
+      responses:
+        "200":
+          description: "List of cars"
+          schema:
+            type: "array"
+            items: { $ref: "#/definitions/Car" }
+  "/api/cars/{carId}":
+    get:
+      operationId: "getCarById"
+      description: "Gets a single car by ID"
+      parameters:
+      - name: "carId"
+        in: "path"
+        type: "string"
+        required: true
+        description: "the ID of the car to return"
+      responses:
+        "200":
+          description: "Car with given ID"
+          schema: { $ref: "#/definitions/Car" }
+        "404":
+          description: "Car not found"
+definitions:
+  Car:
+    type: "object"
+    properties:
+      vin: { type: "string" }
+      make: { type: "string" }
+      model: { type: "string" }
+      year: { type: "integer" }

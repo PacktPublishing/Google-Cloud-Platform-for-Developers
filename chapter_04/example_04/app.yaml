@@ -1,0 +1,3 @@
+service: colors
+env: flex
+runtime: custom

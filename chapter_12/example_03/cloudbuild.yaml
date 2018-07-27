@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+  - build
+  - -t
+  - us.gcr.io/$PROJECT_ID/simple-app-server:$TAG_NAME
+  - --build-arg
+  - message="Hello From Container Builder! Build ID $BUILD_ID"
+  - '.'
+images:
+- us.gcr.io/$PROJECT_ID/simple-app-server:$TAG_NAME

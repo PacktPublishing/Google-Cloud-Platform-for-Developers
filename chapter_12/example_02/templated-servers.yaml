@@ -1,0 +1,16 @@
+imports:
+- path: app-server.jinja
+
+resources:
+- name: app-server-1
+  type: app-server.jinja
+  properties:
+    vm_name: app-server-1
+    zone: us-east1-b
+    message: App Server 1 Running!
+- name: app-server-2
+  type: app-server.jinja
+  properties:
+    vm_name: app-server-2
+    zone: us-central1-a
+    message: App Server 2 Running!

@@ -1,0 +1,19 @@
+{
+  "name": "device-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulator.js",
+  "scripts": {
+    "start": "node simulator.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.16.0",
+    "jsonwebtoken": "^8.3.0",
+    "mqtt": "^2.18.2",
+    "rxjs": "^6.2.1",
+    "yargs": "^12.0.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "cloud_shell_demo",
+  "version": "1.0.0",
+  "description": "A simple demo application for the Google Cloud Shell. Demonstrates use of the shell, the code editor, and web preview.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Ted Hunter",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

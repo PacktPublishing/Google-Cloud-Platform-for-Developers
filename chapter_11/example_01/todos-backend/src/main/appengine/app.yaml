@@ -1,0 +1,33 @@
+service: todos-backend
+runtime: java
+env: flex
+
+resources:
+  memory_gb: 1.5
+
+manual_scaling:
+  instances: 1
+
+handlers:
+- url: /.*
+  script: app
+
+env_variables:
+  PROFILER_ENABLE: true
+  SPRING_PROFILES_ACTIVE: cloudsql
+  SPRING_CLOUD_GCP_SQL_DATABASE_NAME: todos
+  # Replace the following values with your own.
+  #
+  # To get the instance name, run the following command:
+  #
+  #    gcloud sql instances describe todos-db \
+  #        --format="value(connectionName)"
+  #
+  # To update your instance's root password, run:
+  #
+  #    gcloud sql users set-password root % \
+  #        --instance todos-db \
+  #        --prompt-for-password
+  #
+  SPRING_CLOUD_GCP_SQL_INSTANCE_CONNECTION_NAME: 'YOUR_INSTANCE_NAME'
+  SPRING_DATASOURCE_PASSWORD: 'YOUR_DB_PASSWORD'
