@@ -62,10 +62,10 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Authors
 **Ted Hunter**
-Ted Hunter is a software engineering consultant working with fortune 500 companies to design cloud-native solutions and drive public cloud adoption, primarily within the Google ecosystem. He has a background in full stack development, DevOps transformation, and designing enterprise data solutions. He is currently a Solution Architect at Slalom Consulting, serving clients in the Southeastern United States.
+is a software engineering consultant working with fortune 500 companies to design cloud-native solutions and drive public cloud adoption, primarily within the Google ecosystem. He has a background in full stack development, DevOps transformation, and designing enterprise data solutions. He is currently a Solution Architect at Slalom Consulting, serving clients in the Southeastern United States.
 
 **Steven Porter**
-Steven Porter is a consulting technology leader for Slalom Atlanta's Software Engineering practice, a Microsoft Regional Director, and a Google Certified Cloud Architect. His major focus for the past 5+ years has been IT modernization and cloud adoption with implementations across Microsoft Azure, Google Cloud Platform, AWS, and numerous hybrid/private cloud platforms. Outside of work, Steve is an avid outdoorsman spending as much time as possible outside hiking, hunting, and fishing with his family of five.
+is a consulting technology leader for Slalom Atlanta's Software Engineering practice, a Microsoft Regional Director, and a Google Certified Cloud Architect. His major focus for the past 5+ years has been IT modernization and cloud adoption with implementations across Microsoft Azure, Google Cloud Platform, AWS, and numerous hybrid/private cloud platforms. Outside of work, Steve is an avid outdoorsman spending as much time as possible outside hiking, hunting, and fishing with his family of five.
 
 
 ### Suggestions and Feedback
