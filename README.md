@@ -47,18 +47,18 @@ With the following software and hardware list you can run all code files present
 
 ### Software and Hardware List
 
-| Chapter  | Software required                   | OS required                        | Hardware required            |
-| -------- | ------------------------------------| -----------------------------------|------------------------------|
-| 1        | Java/JDK version: 1.8, Spark version: 2.3.0 | Windows 7/10, Linux distro (preferably Ubuntu >14.04), MacOS. |  (At least) Core i3 processor, 50GB disk space and 8GB RAM.|
-| 2-9        | RJava/JDK version: 1.8, Spark version: 2.3.0, Spark csv_2.11 version: 1.3.0, ND4j backend version:  -	If GPU configured: nd4j-cuda-9.0-platform  -	Otherwise: nd4j-native, ND4j version: 1.0.0-alpha, DL4j version: 1.0.0-alpha, Datavec version: 1.0.0-alpha, Arbiter version: 1.0.0-alpha, Logback version: 1.2.3, JavaCV platform version: 1.4.1, HTTP Client version: 4.3.5, Jfreechart:1.0.13, Jcodec:0.2. | Windows 7/10, Linux distro (preferably Ubuntu >14.04), MacOS. | >=Core i5 processor, >=100GB disk space and >=16GB RAM. In addition, Nvidia GPU driver has to be installed with CUDA and CuDNN configured if you want to perform the training on GPU. |
-|10   | Java/JDK version: 1.8, Spark version: 2.3.0, Spark csv_2.11 version: 1.3.0, Jfreechart:1.0.13, RankSys:0.4.3 | (At least) Core i3 processor, 50GB disk space and 8GB RAM.|Windows 7/10, Linux distro (preferably Ubuntu >14.04), MacOS.
+All examples and exercises in this book can be completed directly within the Google Cloud Console and Google Cloud Shell, however many users will prefer to work within a local development environment. To do so, download and install the Google Cloud SDK available
+at https://cloud.google.com/sdk/. 
 
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/JavaDeepLearningProjects_ColorImages.pdf).
+Just a current browser, a GCP account, and optionally a GitHub account. There's a note about using
+Jetbrains IntelliJ for debugging but the same example is provided using the Google Cloud Console.
+
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://www.packtpub.com/sites/default/files/downloads/GoogleCloudPlatformforDevelopers_ColorImages.pdf).
 
 ### Related products <Paste books from the Other books you may enjoy section>
-* Mastering Java Machine Learning [[Packt]](https://www.packtpub.com/big-data-and-business-intelligence/mastering-java-machine-learning#utm_source=github&utm_medium=repository&utm_campaign=9781785880513) [[Amazon]](https://www.amazon.com/dp/1785880519)
+* Google Cloud Platform for Architects [[Packt]](https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-architects?utm_source=github&utm_medium=repository&utm_campaign=9781788834308) [[Amazon]](https://www.amazon.com/dp/1788834305)
 
-* Neural Network Programming with Java - Second Edition [[Packt]](https://www.packtpub.com/big-data-and-business-intelligence/neural-network-programming-java-second-edition#utm_source=github&utm_medium=repository&utm_campaign=9781787126053) [[Amazon]](https://www.amazon.com/dp/1787126056)
+* Google Cloud Platform Cookbook [[Packt]](https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781788291996) [[Amazon]](https://www.amazon.com/dp/1788291999)
 
 ## Get to Know the Author(s)
 **Md. Rezaul Karim**
