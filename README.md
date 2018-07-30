@@ -27,16 +27,23 @@ All of the code is organized into folders. For example, Chapter02.
 
 The code will look like the following:
 ```
-<properties>
- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
- <java.version>1.8</java.version>
-</properties>
+{
+    "eventId": "27819225098479",
+    "timestamp": "2018-01-27T18:11:24.836Z",
+    "eventType": "providers/cloud.pubsub/eventTypes/topic.publish",
+    "resource": "projects/<PROJECT_ID>/topics/<TOPIC_NAME>",
+    "data": {
+      "@type": "type.googleapis.com/google.pubsub.v1.PubsubMessage",
+      "attributes": {
+          "<KEY1>": "<VALUE1>",
+          "<KEY2>": "<VALUE2>"
+},
 ```
 
 **Following is what you need for this book:**
-If you are a data scientist, machine learning professional, or deep learning practitioner keen to expand your knowledge by delving into the practical aspects of deep learning with Java, then this book is what you need! Get ready to build advanced deep learning models to carry out complex numerical computations. Some basic understanding of machine learning concepts and a working knowledge of Java are required.
+Google Cloud Platform for Developers is for application developers. This book will enable you to fully leverage the power of Google Cloud Platform to build resilient and intelligent software solutions.
 
-With the following software and hardware list you can run all code files present in the book (Chapter 1-10).
+With the following software and hardware list you can run all code files present in the book (Chapter 1-15).
 
 ### Software and Hardware List
 
