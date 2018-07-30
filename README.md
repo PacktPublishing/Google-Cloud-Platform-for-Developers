@@ -60,25 +60,13 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Google Cloud Platform Cookbook [[Packt]](https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781788291996) [[Amazon]](https://www.amazon.com/dp/1788291999)
 
-## Get to Know the Author(s)
-**Md. Rezaul Karim**
-Md. Rezaul Karim is a Research Scientist at Fraunhofer FIT, Germany. He is also a PhD
-candidate at RWTH Aachen University, Germany. Before joining FIT, he was a Researcher
-at Insight Centre for Data Analytics, Ireland. Before that, he was a Lead Engineer at
-Samsung Electronics, Korea.
-He has 9 years of R&D experience in Java, Scala, Python, and R. He has hands-on
-experience in Spark, Zeppelin, Hadoop, Keras, scikit-learn, TensorFlow, Deeplearning4j,
-and H2O. He has published several research papers in top-ranked journals/conferences
-focusing on bioinformatics and deep learning.
+## Get to Know the Authors
+**Ted Hunter**
+Ted Hunter is a software engineering consultant working with fortune 500 companies to design cloud-native solutions and drive public cloud adoption, primarily within the Google ecosystem. He has a background in full stack development, DevOps transformation, and designing enterprise data solutions. He is currently a Solution Architect at Slalom Consulting, serving clients in the Southeastern United States.
 
+**Steven Porter**
+Steven Porter is a consulting technology leader for Slalom Atlanta's Software Engineering practice, a Microsoft Regional Director, and a Google Certified Cloud Architect. His major focus for the past 5+ years has been IT modernization and cloud adoption with implementations across Microsoft Azure, Google Cloud Platform, AWS, and numerous hybrid/private cloud platforms. Outside of work, Steve is an avid outdoorsman spending as much time as possible outside hiking, hunting, and fishing with his family of five.
 
-## Other books by the authors
-* [Predictive Analytics with TensorFlow](https://www.packtpub.com/big-data-and-business-intelligence/predictive-analytics-tensorflow)
-* [Deep Learning with TensorFlow - Second Edition](https://www.packtpub.com/big-data-and-business-intelligence/deep-learning-tensorflow-second-edition)
-* [Scala and Spark for Big Data Analytics](https://www.packtpub.com/big-data-and-business-intelligence/scala-and-spark-big-data-analytics)
-* [Scala Machine Learning Projects](https://www.packtpub.com/big-data-and-business-intelligence/scala-machine-learning-projects)
-* [Practical Convolutional Neural Networks](https://www.packtpub.com/big-data-and-business-intelligence/practical-convolutional-neural-networks)
-* [Large Scale Machine Learning with Spark](https://www.packtpub.com/big-data-and-business-intelligence/large-scale-machine-learning-spark)
 
 ### Suggestions and Feedback
 [Click here](https://docs.google.com/forms/d/e/1FAIpQLSdy7dATC6QmEL81FIUuymZ0Wy9vH1jHkvpY57OiMeKGqib_Ow/viewform) if you have any feedback or suggestions.
