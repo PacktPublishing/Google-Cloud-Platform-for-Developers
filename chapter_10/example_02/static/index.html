@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GCS Client Uploads</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h1>GCS Client Uploads</h1>
+
+    <div>
+        <h2>Upload through App Engine</h2>
+        <form id="upload-via-gae" name="upload-via-gae" enctype="multipart/form-data">
+            <input type="file" name="gae-image" accept="image/*">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <hr />
+
+    <div>
+        <h2>Upload directly to GCS</h2>
+        <form id="upload-via-gcs" enctype="multipart/form-data">
+            <input type="file" id="gcs-image" accept="image/*">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <hr />
+
+    <div id="upload-results" style="visibility: hidden;">
+        <h2>Result</h2>
+        <img id="uploaded-image" src="" width="350" height="auto">
+
+        <p id="annotations" style="display: none"></p>
+
+        <p>
+            <b>Upload time:</b>
+            <code id="elapsed-time"></code>
+        </p>
+        <p>
+            <b>Upload URL:</b>
+            <code id="upload-url"></code>
+        </p>
+        <p>
+            <b>Display URL:</b>
+            <code id="display-url"></code>
+        </p>
+
+    </div>
+
+    <script>
+
+        var signedUrl;
+        var publicUrl;
+
+        /**
+         * When the direct-to-gcs file changes, we need to provision a signed URL
+         * with the given file name and file type. This allows GCS to validate that
+         * the user is permitted to write this file to our bucket.
+         */
+        $('#gcs-image').change(function (ev) {
+            var file = ev.target.files[0];
+            var filename = encodeURI(file.name);
+            var contentType = encodeURI(file.type);
+            var url = '/api/client-url?name=' + filename + '&content-type=' + contentType;
+            $.ajax({
+                url: url, success: function (data) {
+                    signedUrl = data.url;
+                }
+            });
+        });
+
+        /**
+         * Configure our file submission handlers
+         */
+        $(document).ready(function () {
+            // Routed through App Engine
+            $('#upload-via-gae').submit(function (ev) {
+                ev.preventDefault();
+                var data = new FormData($("#upload-via-gae")[0]);
+                handleSubmit('/api/upload-via-appengine', data, false, 'POST');
+            });
+
+            // Directly to GCS
+            $('#upload-via-gcs').submit(function (ev) {
+                ev.preventDefault();
+                var file = $('#gcs-image')[0].files[0];
+                handleSubmit(signedUrl, file, file.type, 'PUT');
+            });
+        });
+
+        /**
+         * We handle submit manually here rather than directly because
+         * Cloud Storage only accepts PUTs, while HTML forms only accept POSTs.
+         * We also measure the duration of the upload to compare performance.
+         */
+        function handleSubmit(url, data, contentType, method) {
+            var startTime = new Date().getTime();
+            $.ajax({
+                url: url,
+                type: method,
+                processData: false,
+                data: data,
+                contentType: contentType,
+                success: function (resp) {
+                    var elapsed = new Date().getTime() - startTime;
+                    publicUrl = resp.url ? resp.url : url.split('?')[0];
+                    $('#uploaded-image').attr('src', publicUrl);
+                    $('#elapsed-time').text(elapsed + 'ms');
+                    $('#upload-url').text(url);
+                    $('#display-url').text(publicUrl);
+                    $('#upload-results').css('visibility', 'visible');
+                }
+            });
+        }
+
+        /**
+         * The following code is used to display the results of chapter_10/example_03.
+         * See the section "Integrating with Google Cloud Functions" for details. 
+         */
+        $(document).ready(function () {
+            var lastUrl = ''
+            setInterval(function fetchAnnotations() {
+                if (publicUrl && publicUrl != lastUrl) {
+                    // Reformat URL to expected annotations output
+                    var annotationsUrl = publicUrl
+                        .split('?')[0]
+                        .replace('/download', '')
+                        .concat('.annotations.json?alt=media');
+                    // Attempt to fetch the label annotations from Cloud Storage
+                    $.get(annotationsUrl, function (data) {
+                        lastUrl = publicUrl;
+                        if (data && data[0].labelAnnotations.length > 0) {
+                            renderLabels(data[0].labelAnnotations);
+                        }
+                    });
+                }
+            }, 5000);
+        });
+
+        // Render any labels under the upload results.
+        function renderLabels(annotations) {
+            var html = '';
+            annotations.forEach(label => {
+                html += '<li><span class="vision-label">' + label.description
+                    + '</span>(score: ' + label.score.toFixed(4) + ') </li>'
+            });
+
+            $('#annotations')
+                .html('<b>Cloud Vision API Labels:</b>')
+                .append('<ul>' + html + '</ul>')
+                .css('display', 'inline-block');
+        }
+
+    </script>
+
+    <style>
+        body,
+        div {
+            padding: 10px;
+        }
+
+        input[type="file"] {
+            min-width: 400px;
+        }
+
+        code {
+            word-break: break-all;
+        }
+
+        .vision-label {
+            font-weight: bold;
+            display: inline-block;
+            min-width: 200px;
+        }
+    </style>
+</body>
+
+</html>

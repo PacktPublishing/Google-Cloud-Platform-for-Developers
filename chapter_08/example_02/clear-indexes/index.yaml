@@ -1,0 +1,2 @@
+# In order to remove all indexes, pass in an empty `indexs` object
+indexes:

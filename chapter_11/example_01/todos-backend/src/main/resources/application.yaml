@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    gcp:
+      sql:
+        # Disable the Cloud SQL connector when running locally.
+        # This will cause Spring to use an H2 in-memory database.
+        enabled: false
+      trace:
+        # Disable Spring Cloud Trace when running locally.
+        enabled: true
+  # Automatically provision the database to match the expected schema.
+  # In practice, we'd probably want to set ddl-auto to 'update' or
+  # 'validate' when deployed to App Engine.
+  jpa:
+    hibernate:
+      ddl-auto: create
+  # Set the Spring Cloud Sleuth sample rate to 100% (1) so that we can
+  # view more results in Cloud Trace.
+  sleuth:
+    sampler:
+      probability: 1
+
+management:
+  endpoints:
+    web:
+     # Map the Spring Actuator endpoints to /_ah so that our
+     # healthchecks capture true application health.
+      base-path: /_ah
+
+---
+spring.profiles: cloudsql
+# We provide the environment variable SPRING_PROFILES_ACTIVE: cloudsql
+# in src/main/resources/app.yaml. This causes the below configuration
+# to take effect when running on App Engine.
+spring:
+  cloud:
+    gcp:
+      sql:
+        enabled: true
+        database-name: todos-db
+      trace:
+        enabled: true
+
+  # Cloud SQL doesn't support MyISAM, so make sure JPA uses InnoDB
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect

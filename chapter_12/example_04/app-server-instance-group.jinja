@@ -1,0 +1,28 @@
+resources:
+- name: app-server-healthcheck
+  type: compute.v1.httpHealthCheck
+  properties:
+    port: 80
+    requestPath: /
+- name: app-server-target-pool
+  type: compute.v1.targetPool
+  properties:
+    region: us-central1
+    healthChecks:
+    - '$(ref.app-server-healthcheck.selfLink)'
+- name: app-server-mig
+  type: compute.v1.regionInstanceGroupManager
+  properties:
+    region: us-central1
+    targetSize: 3
+    targetPools:
+    - '$(ref.app-server-target-pool.selfLink)'
+    baseInstanceName: app-server-instance
+    instanceTemplate: https://www.googleapis.com/compute/v1/projects/{{ env["project"] }}/global/instanceTemplates/{{ properties['instance_template'] }}
+- name: app-server-load-balancer
+  type: compute.v1.forwardingRule
+  properties:
+    region: us-central1
+    portRange: 80
+    target: '$(ref.app-server-target-pool.selfLink)'
+

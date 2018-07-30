@@ -1,0 +1,15 @@
+service: used-cars
+runtime: go
+env: flex
+
+endpoints_api_service:
+  name: used-cars-dot-<YOUR_PROJECT_ID>.appspot.com
+  rollout_strategy: managed
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10

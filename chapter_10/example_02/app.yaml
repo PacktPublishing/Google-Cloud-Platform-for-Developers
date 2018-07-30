@@ -1,0 +1,20 @@
+service: gcs-image-uploads
+runtime: go
+api_version: go1.8
+
+handlers:
+
+- url: /(api|_ah)/.*
+  script: _go_app
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+
+- url: /.*
+  static_files: static/index.html
+  upload: static/index.html
+
+env_variables:
+  PROJECT_ID: YOUR_PROJECT_ID
+  BUCKET_NAME: YOUR_BUCKET_NAME

@@ -1,0 +1,20 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+default_expiration: "30s"
+
+env_variables:
+  COLORS_URL: https://colors-dot-{}
+
+handlers:
+- url: /admin/.*
+  script: main.app
+  login: admin
+
+- url: /api/.*
+  script: main.app
+
+- url: /
+  static_files: index.html
+  upload: index.html

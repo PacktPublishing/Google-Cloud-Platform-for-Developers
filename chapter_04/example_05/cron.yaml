@@ -1,0 +1,8 @@
+cron:
+- description: access an admin-only API endpoint via the Cron Service
+  url: /admin/env
+  target: default
+  schedule: every 30 minutes
+  retry_parameters:
+    job_retry_limit: 3
+    min_backoff_seconds: 5

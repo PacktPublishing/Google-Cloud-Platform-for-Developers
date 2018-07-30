@@ -1,0 +1,7 @@
+<configuration>
+    <include resource="org/springframework/cloud/gcp/autoconfigure/logging/logback-appender.xml" />
+    
+    <root level="INFO">
+        <appender-ref ref="STACKDRIVER" />
+    </root>
+</configuration>

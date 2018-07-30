@@ -1,0 +1,77 @@
+steps:
+
+# Execute any tests using the official Node LTS image
+- name: 'node:10.3'
+  args: ['npm', 'test']
+  dir: chapter_12/example_04
+
+# Build a new Docker image based on the most recent commit
+- name: 'gcr.io/cloud-builders/docker'
+  args: 
+  - build
+  - --tag
+  - us.gcr.io/$PROJECT_ID/simple-app-server:$SHORT_SHA
+  - --build-arg=message="Hello from the simple-app-server instance group!"
+  - --build-arg=buildId=$BUILD_ID
+  - --build-arg=repoName=$REPO_NAME
+  - --build-arg=commit=$SHORT_SHA
+  - '.'
+  dir: chapter_12/example_04
+
+# Publish the image to GCR rather than as a build artifact so that it will be available
+# to Cloud Deployment Manager
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us.gcr.io/$PROJECT_ID/simple-app-server:$SHORT_SHA']
+  dir: chapter_12/example_04
+
+# Create a new Container-VM Compute Engine Instance Template.
+# We create this in Container Builder rather than Deployment Manager
+# becuase the container declaration format currently uses a Google internal API.
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - beta
+  - compute
+  - instance-templates
+  - create-with-container
+  - simple-app-server-$SHORT_SHA
+  - --machine-type=f1-micro
+  - --region=us-central1
+  - --tags=http-server
+  - --container-image=us.gcr.io/$PROJECT_ID/simple-app-server:$SHORT_SHA
+  - --container-env=PORT=80
+  dir: chapter_12/example_04
+
+# Create or update the deployment to roll out the new image
+# We provide a custom entrypoint to allow an inline script to be executed
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: bash
+  args:
+  - -c
+  - |
+    # Default to creating a new deployment
+    deploy_method=create
+    # Check if the deployment already exists
+    if gcloud deployment-manager deployments list --format="value(name)" | grep -q "simple-app-deployment"; then
+      # Update the existing deployment
+      echo "deployment already exists, updating"
+      deploy_method=update
+    fi
+    # Execute the deployment      
+    gcloud deployment-manager deployments ${deploy_method} \
+        simple-app-deployment \
+        --template app-server-instance-group.jinja \
+        --properties instance_template:simple-app-server-$SHORT_SHA
+  dir: chapter_12/example_04
+
+# Trigger a rolling update to the managed instance group
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - beta
+  - compute
+  - instance-groups
+  - managed
+  - rolling-action
+  - start-update
+  - app-server-mig
+  - --version=template=simple-app-server-$SHORT_SHA
+  - --region=us-central1

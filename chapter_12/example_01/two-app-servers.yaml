@@ -1,0 +1,55 @@
+resources:
+- name: app-server-1
+  type: compute.v1.instance
+  properties:
+    zone: us-east1-b
+    machineType: https://www.googleapis.com/compute/v1/projects/YOUR_PROJECT_ID/zones/us-east1-b/machineTypes/f1-micro
+    tags:
+      items:
+      - http-server
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-8
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/YOUR_PROJECT_ID/global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    metadata:
+      items:
+        - key: startup-script
+          value: |
+            #!/bin/bash
+            echo '<html><body><h1>App Server 1 Running!</body></html>' > index.html
+            sudo python -m SimpleHTTPServer 80
+- name: app-server-2
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/YOUR_PROJECT_ID/zones/us-central1-a/machineTypes/f1-micro
+    tags:
+      items:
+      - http-server
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-8
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/YOUR_PROJECT_ID/global/networks/default
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
+    metadata:
+      items:
+        - key: startup-script
+          value: |
+            #!/bin/bash
+            echo '<html><body><h1>App Server 2 Running!</body></html>' > index.html
+            sudo python -m SimpleHTTPServer 80
