@@ -1,6 +1,6 @@
 # Google Cloud Platform for Developers
 
-<a href="https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-developers?utm_source=github&utm_medium=repository&utm_campaign=9781788837675"><img src="https://dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B09886_MockupCover_New.png" alt="Google Cloud Platform for Developers" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-developers?utm_source=github&utm_medium=repository&utm_campaign=9781788837675"><img src="https://dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B09886_cover.png" alt="Google Cloud Platform for Developers" height="256px" align="right"></a>
 
 This is the code repository for [Google Cloud Platform for Developers](https://www.packtpub.com/virtualization-and-cloud/google-cloud-platform-developers?utm_source=github&utm_medium=repository&utm_campaign=9781788837675), published by Packt.
 
