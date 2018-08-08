@@ -41,7 +41,9 @@ The code will look like the following:
 ```
 
 **Following is what you need for this book:**
-Google Cloud Platform for Developers is for application developers. This book will enable you to fully leverage the power of Google Cloud Platform to build resilient and intelligent software solutions.
+Google Cloud Platform for Developers is for application developers. This book will enable you to fully leverage the power of Google Cloud Platform to build resilient and intelligent software solutions. Many of these exersizes can be completed from within the Cloud Shell and Cloud Shell code editor. To open this repository in your Google Cloud project, click the button below.
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/PacktPublishing/Google-Cloud-Platform-for-Developers&page=editor&print=misc/hello.txt&open_in_editor=README.md)
 
 With the following software and hardware list you can run all code files present in the book (Chapter 1-15).
 
